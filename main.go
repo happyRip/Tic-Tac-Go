@@ -1,6 +1,6 @@
 package main
 
-import(
+import (
 	"fmt"
 	"log"
 	"strconv"
@@ -9,20 +9,22 @@ import(
 func main() {
 	game := Game{
 		IsCircle: true,
-		PlayerN: 1,
-		Board: [][]rune{{'1','2','3'}, {'4','5','6'}, {'7','8','9'}},
-		Win: [][]rune{{'1','2','3'}, {'4','5','6'}, {'7','8','9'}, {'1','4','7'}, {'2','5','8'}, {'3','6','9'}, {'1','5','9'}, {'3','5','7'}},
+		PlayerN:  1,
+		Board: [][]rune{{'1', '2', '3'},
+			{'4', '5', '6'},
+			{'7', '8', '9'}},
+		Win: [][]rune{{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}, {'1', '4', '7'}, {'2', '5', '8'}, {'3', '6', '9'}, {'1', '5', '9'}, {'3', '5', '7'}},
 	}
 
 	fmt.Println(game.Win)
 
 	game.GetPlayerN()
 	game.GetPlayerNames()
-/*
-	game.Draw()
-	game.PrintScores()
-	game.Move()
-*/
+	/*
+		game.Draw()
+		game.PrintScores()
+		game.Move()
+	*/
 	game.PlayRound()
 }
 
@@ -31,20 +33,20 @@ func IsNumber(s string) (int, bool) {
 	if err != nil {
 		return 0, false
 	} else {
-		return i,true
+		return i, true
 	}
 }
 
 type Game struct {
 	IsCircle bool
-	PlayerN int
-	Score []int
-	Players []string
-	Board [][]rune
-	Win [][]rune
+	PlayerN  int
+	Score    []int
+	Players  []string
+	Board    [][]rune
+	Win      [][]rune
 }
 
-func (g * Game) GetPlayerN() {
+func (g *Game) GetPlayerN() {
 	for {
 		fmt.Print("Define number of players: ")
 		var temp string
@@ -69,7 +71,7 @@ func (g Game) PrintScores() {
 	}
 }
 
-func (g * Game) GetPlayerNames() {
+func (g *Game) GetPlayerNames() {
 	for i := 0; i < g.PlayerN; i++ {
 		var temp string
 		fmt.Print("Player", i+1, " name: ")
@@ -107,7 +109,7 @@ func (g Game) Draw() {
 	}
 }
 
-func (g * Game) Move() {
+func (g *Game) Move() {
 	if g.IsCircle {
 		fmt.Print(g.Players[0])
 	} else {
@@ -121,7 +123,7 @@ func (g * Game) Move() {
 	} else {
 		fmt.Print("x: ")
 	}
-	for {	
+	for {
 		var temp string
 		_, err := fmt.Scanln(&temp)
 		if err != nil {
@@ -150,7 +152,7 @@ func (g * Game) Move() {
 				x, y = x-1, y-1
 				fmt.Println("\t\tx:", x, "y:", y)
 				if g.Board[x][y] != rune(i+'0') {
-					fmt.Print("\tThis slot is already taken: ", x, " ", y, " ", g.Board[x][y],".\nTry again: ")
+					fmt.Print("\tThis slot is already taken: ", x, " ", y, " ", g.Board[x][y], ".\nTry again: ")
 				} else {
 					if g.IsCircle {
 						(*g).Board[x][y] = 'o'
@@ -169,13 +171,13 @@ func (g * Game) Move() {
 	}
 }
 
-func (g * Game) CheckWin() {
-	
+func (g *Game) CheckWin() {
+
 }
 
-func (g * Game) PlayRound() {
+func (g *Game) PlayRound() {
 	g.Draw()
-  // maximum number of moves is 9
+	// maximum number of moves is 9
 	for i := 0; i < 9; i++ {
 		g.Move()
 		g.Draw()
