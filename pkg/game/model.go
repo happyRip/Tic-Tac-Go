@@ -1,8 +1,8 @@
 package game
 
 import (
-	c "tic-tac-go/pkg/cursor"
-	u "tic-tac-go/pkg/utility"
+	c "github.com/happyRip/Tic-Tac-Go/pkg/cursor"
+	u "github.com/happyRip/Tic-Tac-Go/pkg/utility"
 )
 
 type Model struct {

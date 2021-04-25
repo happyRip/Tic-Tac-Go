@@ -1,4 +1,4 @@
-module tic-tac-go
+module github.com/happyRip/Tic-Tac-Go
 
 go 1.16
 

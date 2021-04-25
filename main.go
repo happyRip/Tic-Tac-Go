@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"tic-tac-go/pkg/game"
+	"github.com/happyRip/Tic-Tac-Go/pkg/game"
 
 	tea "github.com/charmbracelet/bubbletea"
 )
