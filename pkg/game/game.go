@@ -21,16 +21,16 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.view = "quitting"
 			return m, tea.Quit
 
-		case "up", "k":
+		case "up", "k", "w":
 			m.cursor.Up()
 
-		case "down", "j":
+		case "down", "j", "s":
 			m.cursor.Down()
 
-		case "left", "h":
+		case "left", "h", "a":
 			m.cursor.Left()
 
-		case "right", "l":
+		case "right", "l", "d":
 			m.cursor.Right()
 
 		case "enter", " ":
@@ -79,7 +79,7 @@ func (m Model) View() string {
 		s += "\nNo winner this time.\n\nPress ENTER to start a new game.\n"
 
 	case "quitting":
-		return fmt.Sprintf("\nFinal score:\n%v : %v\n", m.score[0], m.score[1])
+		return fmt.Sprintf("\nFinal score:\n%v : %v\n\n", m.score[0], m.score[1])
 	}
 
 	s += "\nPress q to quit.\n"
